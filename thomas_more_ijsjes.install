@@ -1,0 +1,181 @@
+<?php
+
+function thomas_more_ijsjes_schema() {
+  $schema['thomas_more_keuze'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'naam' => [
+        'description' => 'Naam van klant.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+
+      'taal' => [
+        'description' => 'Taal naam.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+
+      'geslacht' => [
+        'description' => 'Geslacht type.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+
+      'ip_adres' => [
+        'description' => 'Ip adres',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+
+      'keuze' => [
+        'description' => 'Keuze id',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+
+      'smaak_keuze_id' => [
+        'description' => 'Smaak van ijsje id.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  
+  $schema['thomas_more_ijsjes_smaak'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'naam' => [
+        'description' => 'Ijsje of wafel',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  
+  $schema['thomas_more_ijsjes_relatie_topping'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'wafel_id' => [
+        'description' => 'Wafel id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'topping_id' => [
+        'description' => 'Topping id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  
+  $schema['thomas_more_ijsjes_topping'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'Topping id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'naam' => [
+        'description' => 'Topping naam.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  
+  $schema['thomas_more_threshold'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'threshold id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'naam' => [
+        'description' => 'Keuze naam.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+
+      'threshold' => [
+        'description' => 'Max optelling.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Create Thomas More ijsjes test table.
+ */
+function thomas_more_ijsjes_update_8012(&$sandbox) {
+  $table = thomas_more_ijsjes_schema();
+  \Drupal::database()->schema()->createTable('thomas_more_keuze', $table["thomas_more_keuze"]);
+  \Drupal::database()->schema()->createTable('thomas_more_ijsjes_smaak', $table["thomas_more_ijsjes_smaak"]);
+  \Drupal::database()->schema()->createTable('thomas_more_wafel_relatie_topping', $table["thomas_more_ijsjes_relatie_topping"]);
+  \Drupal::database()->schema()->createTable('thomas_more_ijsjes_topping', $table["thomas_more_ijsjes_topping"]);
+  \Drupal::database()->schema()->createTable('thomas_more_threshold', $table["thomas_more_threshold"]);
+}

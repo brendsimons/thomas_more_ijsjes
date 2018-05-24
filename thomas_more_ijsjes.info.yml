@@ -1,0 +1,6 @@
+name: Thomas More Ijsjes
+type: module
+description: 'Thomas More Ijsjes beheren.'
+core: 8.x
+package: Thomas More
+dependencies: system

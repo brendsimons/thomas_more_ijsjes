@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Naam</th>
+    <th>Geslacht</th>
+    <th>Taal</th>
+    <th>Ip adres</th>
+    <th>Keuze</th>
+    <th>Extra's</th>
+  </tr>
+  {% for keuze in keuzes %}
+  <tr>
+    <td>
+      <span>{{ keuze.naam }}</span>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

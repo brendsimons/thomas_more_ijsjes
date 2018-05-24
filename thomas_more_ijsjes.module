@@ -1,0 +1,22 @@
+<?php
+function thomas_more_ijsjes_mail($key, &$message, $params) {
+    switch ($key) {
+      case 'nieuwe_bestelling':
+        $message['subject'] = $params['subject'];
+        $message['body'][] = $params['body'];
+        break;
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thomas_more_ijsjes_theme() {
+  return [
+    'ijsjes' => [
+      'variables' => [
+        'keuzes' => NULL,
+      ],
+    ],
+  ];
+}

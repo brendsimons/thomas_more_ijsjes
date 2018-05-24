@@ -1,0 +1,17 @@
+thomas_more_ijsjes.admin.settings:
+  title: 'Thresholds instellen'
+  parent: system.admin_config_ui
+  description: 'Thresholds voor zowel ijsjes als wafels instellen'
+  route_name: thomas_more_ijsjes.admin.settings
+
+thomas_more_ijsjes.admin.beheer:
+  title: 'Keuzes Beheren'
+  parent: system.admin_config_ui
+  description: 'Keuzes van toppings voor de wafels en smaken van de ijsjes beheren.'
+  route_name: thomas_more_ijsjes.admin.beheer
+  
+thomas_more_ijsjes.admin.back-office:
+  title: 'Back-office'
+  parent: system.admin_config_ui
+  description: 'Back-office voor alle keuzes te weergeven.'
+  route_name: thomas_more_ijsjes.admin.back-office
