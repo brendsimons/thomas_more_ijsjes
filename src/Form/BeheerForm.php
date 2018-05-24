@@ -30,14 +30,14 @@ class BeheerForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
       
     foreach($this->ijsjesManager->getSmaken() as $smaak){
-        $form['smaken'. $smaken[$smaak->id] = $this->t($smaak->id)]= [
+        $form['smaken'. $smaak->id] = [
           '#type' => 'textfield',
           '#title' => 'Smaken',
           '#default_value' => $smaken[$smaak->id] = $this->t($smaak->naam),
         ];
     }
     foreach($this->ijsjesManager->getToppings() as $topping){
-        $form['toppings'. $toppings[$topping->id] = $this->t($topping->naam)] = [
+        $form['toppings'. $topping->id] = [
           '#type' => 'textfield',
           '#title' => 'Toppings',
           '#default_value' => $toppings[$topping->id] = $this->t($topping->naam),
@@ -55,10 +55,10 @@ class BeheerForm extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
    foreach($this->ijsjesManager->getSmaken() as $smaak){
-        changeSmaken($form_state->getValue('smaken'.$smaken[$smaak->id] = $this->t($smaak->id)));
+        $this->ijsjesManager->changeSmaken($form_state->getValue('smaken'.$smaak->id), $smaak->id);
     }
     foreach($this->ijsjesManager->getToppings() as $topping){
-        changeToppings($form_state->getValue('toppings'. $toppings[$topping->id] = $this->t($topping->naam)));
+        $this->ijsjesManager->changeToppings($form_state->getValue('toppings'. $topping->id), $topping->id);
     }
     drupal_set_message('De keuzes zijn opgeslagen');
   }

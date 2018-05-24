@@ -40,6 +40,7 @@ class IjsjesManager {
   
   public function getKeuzes(){
     $query = $this->connection->select('thomas_more_keuze', 't');
+    $query->fields('t', ['id', 'naam', 'taal', 'geslacht', 'ip_adres', 'keuze','smaak_keuze_id']);
     return $query->execute()->fetchAll();
   }
   
@@ -79,20 +80,18 @@ class IjsjesManager {
     return $query->execute()->fetchAll();
   }
   
-  public function changeToppings(){
-    return $this->connection->update('thomas_more_ijsjes_topping', 't')
+  public function changeToppings($naam, $id){
+    return $this->connection->update('thomas_more_ijsjes_topping')
       ->fields([
-        'id' => $wafel_id,
-        'topping_id' => $topping_id,
-      ])->execute();
+        'naam' => $naam,
+      ])->condition('id', $id)->execute();
   }
     
-  public function changeSmaken(){
-    return $this->connection->update('thomas_more_ijsjes_smaak', 't')
+  public function changeSmaken($naam, $id){
+    return $this->connection->update('thomas_more_ijsjes_smaak')
       ->fields([
-        'wafel_id' => $wafel_id,
-        'topping_id' => $topping_id,
-      ])->execute();
+        'naam' => $naam,
+      ])->condition('id', $id)->execute();
   }
   
   function sendEmail(){

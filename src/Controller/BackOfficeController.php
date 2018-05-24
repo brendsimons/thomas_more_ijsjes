@@ -24,7 +24,7 @@ class BackOfficeController extends ControllerBase {
   public function buildKeuzes() {
     return [
       '#theme' => 'ijsjes',
-      '#keuzes' => $this->ijsjesManager->getKeuze(),
+      'keuzes' => $this->ijsjesManager->getKeuzes(),
     ];
   }
 
